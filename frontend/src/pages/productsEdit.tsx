@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar";
-import ProductForm from "../components/ProductForm";
-import ProductList from "../components/ProductList";
+import ProductEdit from "../components/ProductEdit";
 import Footer from "../components/Footer";
 import styles from "../styles/products.module.css";
 
@@ -9,9 +8,8 @@ export default function ProductsPage() {
         <div>
             <Navbar />
             <main>
-                <h2 className={styles.titulo}>Gestión de Productos</h2>
-                <ProductForm />
-                <ProductList />
+                <h2 className={styles.titulo}>Editando producto</h2>
+                <ProductEdit />
             </main>
             <Footer />
         </div>

@@ -1,0 +1,8 @@
+.movements{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    padding: 20px;
+    margin: 50px;
+}

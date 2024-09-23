@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../lib/axios'; // Instancia de Axios para consumir la API
+import styles from './ProductList.module.css';
 
 interface Product {
     id: number;
@@ -28,7 +29,7 @@ export default function ProductList() {
     }, []);
 
     return (
-        <div>
+        <div className={styles.list_container}>
             <h3>Lista de Productos</h3>
             <ul>
                 {products.map(product => (
@@ -36,7 +37,7 @@ export default function ProductList() {
                         <h4>{product.name}</h4>
                         <p>Categoría: {product.category}</p>
                         <p>Cantidad: {product.quantity}</p>
-                        <p>Precio: {product.price}</p>
+                        <p>Precio: $ {product.price}</p>
                         <p>Descripción: {product.description}</p>
                     </li>
                 ))}

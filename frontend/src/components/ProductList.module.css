@@ -1,0 +1,36 @@
+.list_container{
+    margin-top: 5vh;
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.list_container h3{
+    font-size: x-large;
+    margin: 10px;
+}
+
+.list_container ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 30px;
+    margin-bottom: 40vh;
+    justify-content: space-between;
+    padding: 4vh;
+}
+
+.list_container li {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid white;
+    margin: 10px;
+}
+
+.list_container li h4 {
+    font-size: large;
+    font-weight: bold;
+}
