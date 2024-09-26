@@ -53,3 +53,7 @@
     background-color: #005bb5;
     color: white;
 }
+
+.logoutIcon {
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+} 

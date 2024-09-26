@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../lib/axios'; // Instancia de Axios para consumir la API
 import styles from './ProductsMovements.module.css';
-import Link from 'next/link';
 import { useProductContext } from '@/context/productContext';
 import router from 'next/router';
 
