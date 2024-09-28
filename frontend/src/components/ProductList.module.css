@@ -34,3 +34,10 @@
     font-size: large;
     font-weight: bold;
 }
+
+.buttons{
+    display: flex;
+    flex: 1;
+    padding: 10px;
+    justify-content: center;
+}

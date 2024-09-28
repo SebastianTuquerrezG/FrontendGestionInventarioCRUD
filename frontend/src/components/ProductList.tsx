@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import api from '../lib/axios'; // Instancia de Axios para consumir la API
 import styles from './ProductList.module.css';
+import PortalToEdit from './PortalToEdit';
+import { useUserContext } from '@/context/userContext';
 
 interface Product {
     id: number;
@@ -12,7 +14,9 @@ interface Product {
 }
 
 export default function ProductList() {
+    const { user } = useUserContext();
     const [products, setProducts] = useState<Product[]>([]);
+    const classContainer = 'clipping-container';
 
     useEffect(() => {
         // Obtener todos los productos
@@ -28,6 +32,16 @@ export default function ProductList() {
         fetchProducts();
     }, []);
 
+    const onDelete = async (id: number) => {
+        try {
+            await api.delete(`/products/${id}`);
+            alert('Producto eliminado correctamente');
+            window.location.reload();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className={styles.list_container}>
             <h3>Lista de Productos</h3>
@@ -39,6 +53,21 @@ export default function ProductList() {
                         <p>Cantidad: {product.quantity}</p>
                         <p>Precio: $ {product.price}</p>
                         <p>Descripción: {product.description}</p>
+                        <>
+                            {user?.role == 'ADMIN' &&
+                                <div className={`${classContainer} ${styles.buttons}`}>
+                                    <PortalToEdit
+                                        product={product}
+                                    />
+                                    <button
+                                        onClick={() => onDelete(product.id)}
+                                        style={{ padding: '5px 10px', backgroundColor: '#f44336', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                                    >
+                                        Eliminar
+                                    </button>
+                                </div>
+                            }
+                        </>
                     </li>
                 ))}
             </ul>

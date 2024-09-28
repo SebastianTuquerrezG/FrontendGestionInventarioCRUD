@@ -5,6 +5,17 @@
     border-radius: 8px;
 }
 
+.titulo{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.role{
+    text-align: center;
+    font-size: large;
+}
+
 .profileContainer h3 {
     margin-bottom: 20px;
 }
@@ -33,6 +44,16 @@
     cursor: pointer;
 }
 
+.user{
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+}
+
 .user p{
     color: white;
+}
+
+.user button {
+    margin-top: 20px;
 }

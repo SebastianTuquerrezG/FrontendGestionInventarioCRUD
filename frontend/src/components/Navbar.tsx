@@ -8,6 +8,7 @@ export default function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // Elimina el token de localStorage
+    localStorage.removeItem('id_user');
     router.push('/log'); // Redirige al login
   };
   return (

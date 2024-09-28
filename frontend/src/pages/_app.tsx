@@ -11,8 +11,10 @@ export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
-    if (!token && router.pathname !== "/log") {
-      router.push("/log");
+    if (!token) {
+      if(router.pathname !== "/log" && router.pathname !== "/regist"){
+        router.push("/log");
+      }
     }
   }, [router]);
 

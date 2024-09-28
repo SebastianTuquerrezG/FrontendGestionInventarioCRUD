@@ -4,9 +4,11 @@ import api from '../lib/axios';
 import { useRouter } from 'next/router';
 import LoginForm from './LoginForm';
 import styles from '../styles/login.module.css';
+import { useUserContext } from '@/context/userContext';
 
 const Login: React.FC = () => {
     const router = useRouter();
+    const {setUser} = useUserContext();
 
     const handleLogin = async (username: string, password: string) => {
         try {
@@ -19,6 +21,8 @@ const Login: React.FC = () => {
                 alert('Login successful');
                 await new Promise(resolve => setTimeout(resolve, 500));
                 localStorage.setItem('token', response.data.token);
+                localStorage.setItem('id_user', response.data.id);
+                setUser(response.data);
                 router.push('/'); // Redirigir después del login
             } else {
                 alert('Invalid username or password');

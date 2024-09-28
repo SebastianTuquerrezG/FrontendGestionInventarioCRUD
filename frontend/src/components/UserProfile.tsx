@@ -7,20 +7,20 @@ import styles from './User.Profile.module.css';
 export default function UserProfile() {
     const { user, setUser, clearUser } = useUserContext();
     const [editing, setEditing] = useState(false);
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState(user?.username || '');
+    const [password, setPassword] = useState(user?.password || '');
     const router = useRouter();
 
     useEffect(() => {
         const fetchUserData = async () => {
-            if (user) {
-                try {
-                    const response = await api.get(`/users/${user.id}`);
-                    setUsername(response.data.username);
-                    setPassword(response.data.password);
-                } catch (error) {
-                    console.error('Error al obtener los datos del usuario:', error);
+            try {
+                const id_user = await localStorage.getItem('id_user');
+                if (id_user) {
+                    const response = await api.get(`/users/${Number(id_user)}`);
+                    setUser(response.data);
                 }
+            } catch (error) {
+                console.error('Error al obtener los datos del usuario:', error);
             }
         };
         fetchUserData();
@@ -52,12 +52,12 @@ export default function UserProfile() {
                     await api.delete(`/users/${user.id}`);
                     alert('Perfil eliminado correctamente');
                     clearUser();
-                    router.push('/log'); 
+                    router.push('/log');
                 } else {
                     alert('Usuario no encontrado');
                 }
                 clearUser();
-                router.push('/log'); 
+                router.push('/log');
             } catch (error) {
                 console.error('Error al eliminar el perfil:', error);
                 alert('Hubo un error al eliminar el perfil');
@@ -67,7 +67,8 @@ export default function UserProfile() {
 
     return (
         <div className={styles.profileContainer}>
-            <h3>Perfil de Usuario</h3>
+            <h1 className={styles.titulo}>Perfil de Usuario</h1>
+            <h2 className={styles.role}>ROL: {user?.role}</h2>
             {editing ? (
                 <form onSubmit={handleEdit}>
                     <label>
@@ -93,7 +94,7 @@ export default function UserProfile() {
                 </form>
             ) : (
                 <div className={styles.user}>
-                    <p><strong>Nombre de Usuario:</strong> {user?.name}</p>
+                    <p><strong>Nombre de Usuario:</strong> {user?.username}</p>
                     <p><strong>Contraseña:</strong> {user?.password}</p>
                     <button onClick={() => setEditing(true)}>Editar</button>
                     <button onClick={handleDelete}>Eliminar Perfil</button>
