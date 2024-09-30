@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import api from '../lib/axios'; // Instancia de Axios para consumir la API
 import styles from './ProductList.module.css';
 import PortalToEdit from './PortalToEdit';
 import { useUserContext } from '@/context/userContext';
+import React from 'react';
 
 interface Product {
     id: number;
@@ -19,7 +20,6 @@ export default function ProductList() {
     const classContainer = 'clipping-container';
 
     useEffect(() => {
-        // Obtener todos los productos
         const fetchProducts = async () => {
             try {
                 const response = await api.get('/products');

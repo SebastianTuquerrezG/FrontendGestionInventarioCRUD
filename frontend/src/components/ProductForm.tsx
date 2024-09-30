@@ -2,6 +2,7 @@ import { useState } from 'react';
 import api from '../lib/axios'; // Importar instancia de Axios
 import styles from './ProductForm.module.css';
 import { useUserContext } from '@/context/userContext';
+import React from 'react';
 
 interface ProductFormProps {
     product?: {

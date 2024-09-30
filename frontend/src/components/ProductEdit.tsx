@@ -1,17 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router'; // Para obtener el ID del producto desde la ruta
-import api from '../lib/axios'; // Importar instancia de Axios
+import { useState } from 'react';
+import api from '../lib/axios';
 import styles from './ProductForm.module.css';
 import { useProductContext } from '@/context/productContext';
-
-interface Product {
-    id: number;
-    name: string;
-    category: string;
-    quantity: number;
-    price: number;
-    description: string;
-}
 
 export default function ProductEditForm({ onClose }: any) {
     const { selectedProduct } = useProductContext();

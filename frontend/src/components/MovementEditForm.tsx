@@ -24,7 +24,7 @@ export default function MovementEditForm({ onClose }: any) {
     const { selectedProduct } = useProductContext();
     const [products, setProducts] = useState<Product[]>([]);
     const [id, setId] = useState(selectedProduct?.id);
-    const [product_id, setProduct_id] = useState(selectedProduct?.product_id);
+    const [product_id] = useState(selectedProduct?.product_id);
     const [productsMovement, setProductsMovement] = useState<ProductMovement[]>([]);
     const [movement_type, setMovement_type] = useState(selectedProduct?.movement_type);
     const [quantity, setQuantity] = useState(selectedProduct?.quantity);

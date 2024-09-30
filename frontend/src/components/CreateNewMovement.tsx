@@ -78,6 +78,7 @@ export default function CreateNewMovement({ onClose }: any) {
                             onChange={e => setProduct_id(e.target.value)}
                             className='w-full bg-white-700 px-4 py-2 rounded-md my-2'
                         >
+                            <option value={''}>Selecciona un producto</option>
                             {products.map(product => (
                                 <option key={product.id} value={product.id}>{product.name}</option>
                             ))}
